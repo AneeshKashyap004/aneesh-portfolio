@@ -577,4 +577,51 @@
             "grab": {
               "distance": 140,
               "line_linked": {
-                "opacity":
+                "opacity": 0.5
+              }
+            },
+            "push": {
+              "particles_nb": 4
+            }
+          }
+        },
+        "retina_detect": true
+      });
+
+      // Click animation effect
+      document.addEventListener('click', function(e) {
+        const clickEffect = document.createElement('div');
+        clickEffect.className = 'click-effect';
+        clickEffect.style.left = e.clientX + 'px';
+        clickEffect.style.top = e.clientY + 'px';
+        document.body.appendChild(clickEffect);
+        
+        // Remove after animation completes
+        setTimeout(() => {
+          clickEffect.remove();
+        }, 600);
+      });
+
+      // Scroll animation for sections
+      const animateOnScroll = () => {
+        const elements = document.querySelectorAll('header, section, footer');
+        
+        elements.forEach(element => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.2;
+          
+          if (elementPosition < screenPosition) {
+            element.classList.add('visible');
+          }
+        });
+      };
+
+      // Initial check
+      animateOnScroll();
+      
+      // Check on scroll
+      window.addEventListener('scroll', animateOnScroll);
+    });
+  </script>
+</body>
+</html>
