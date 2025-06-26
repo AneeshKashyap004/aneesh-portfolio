@@ -17,6 +17,12 @@
       --card-bg: rgba(255, 255, 255, 0.9);
       --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       --transition: all 0.3s ease;
+      
+      /* Dark theme variables */
+      --dark-bg: #0f172a;
+      --dark-card: #1e293b;
+      --dark-text: #e2e8f0;
+      --dark-gray: #94a3b8;
     }
 
     * {
@@ -33,6 +39,12 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       position: relative;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body.dark-theme {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
     }
 
     /* Particle Background */
@@ -44,6 +56,11 @@
       left: 0;
       z-index: -1;
       background: var(--light);
+      transition: background-color 0.3s ease;
+    }
+
+    body.dark-theme #particles-js {
+      background: var(--dark-bg);
     }
 
     .container {
@@ -52,6 +69,34 @@
       margin: 0 auto;
       padding: 0 2rem;
       position: relative;
+    }
+
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 1.5rem;
+      right: 1.5rem;
+      z-index: 100;
+      background: var(--primary-light);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    body.dark-theme .theme-toggle {
+      background: var(--dark-card);
+      color: var(--dark-text);
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.1);
     }
 
     /* Header Styles */
@@ -72,6 +117,13 @@
       font-family: 'Playfair Display', serif;
       font-weight: 600;
       color: var(--dark);
+      transition: color 0.3s ease;
+    }
+
+    body.dark-theme h1,
+    body.dark-theme h2,
+    body.dark-theme h3 {
+      color: var(--dark-text);
     }
 
     h1 {
@@ -84,6 +136,12 @@
       color: transparent;
     }
 
+    body.dark-theme h1 {
+      background: linear-gradient(90deg, var(--dark-text), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
     .title-sub {
       font-size: clamp(1rem, 2vw, 1.25rem);
       color: var(--gray);
@@ -91,6 +149,11 @@
       margin-bottom: 1.5rem;
       display: inline-block;
       position: relative;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-theme .title-sub {
+      color: var(--dark-gray);
     }
 
     .title-sub::after {
@@ -109,6 +172,11 @@
       margin: 0 auto 2rem;
       color: var(--gray);
       font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-theme .intro {
+      color: var(--dark-gray);
     }
 
     .contact {
@@ -134,6 +202,11 @@
       overflow: hidden;
     }
 
+    body.dark-theme .contact a {
+      color: var(--primary-light);
+      border-color: rgba(79, 70, 229, 0.3);
+    }
+
     .contact a::before {
       content: '';
       position: absolute;
@@ -152,6 +225,10 @@
     .contact a:hover {
       background: var(--primary-light);
       transform: translateY(-2px);
+    }
+
+    body.dark-theme .contact a:hover {
+      background: rgba(79, 70, 229, 0.2);
     }
 
     /* Section Styles */
@@ -205,6 +282,11 @@
       overflow: hidden;
     }
 
+    body.dark-theme .card {
+      background: var(--dark-card);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
     .card::before {
       content: '';
       position: absolute;
@@ -225,6 +307,10 @@
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
 
+    body.dark-theme .card:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+
     .card h3 {
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
@@ -238,11 +324,21 @@
       font-weight: 500;
       margin-bottom: 1rem;
       font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    body.dark-theme .card em {
+      color: var(--dark-gray);
     }
 
     .card p {
       margin-bottom: 1rem;
       color: var(--dark);
+      transition: color 0.3s ease;
+    }
+
+    body.dark-theme .card p {
+      color: var(--dark-text);
     }
 
     ul {
@@ -253,6 +349,12 @@
       position: relative;
       padding-left: 1.5rem;
       margin-bottom: 0.5rem;
+      color: var(--dark);
+      transition: color 0.3s ease;
+    }
+
+    body.dark-theme ul li {
+      color: var(--dark-text);
     }
 
     ul li::before {
@@ -284,6 +386,11 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+    }
+
+    body.dark-theme .skill-chip {
+      background: rgba(79, 70, 229, 0.2);
+      color: var(--primary-light);
     }
 
     .skill-chip:hover {
@@ -320,7 +427,12 @@
       margin-top: 2rem;
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    body.dark-theme footer {
+      color: var(--dark-gray);
+      border-color: rgba(255, 255, 255, 0.1);
     }
 
     footer.visible {
@@ -341,10 +453,22 @@
       .card-grid {
         grid-template-columns: 1fr;
       }
+      
+      .theme-toggle {
+        top: 1rem;
+        right: 1rem;
+        width: 36px;
+        height: 36px;
+      }
     }
   </style>
 </head>
 <body>
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </button>
+  
   <!-- Particle.js Background -->
   <div id="particles-js"></div>
   
@@ -352,7 +476,6 @@
     <header>
       <h1>Aneesh Kashyap T A</h1>
       <p class="title-sub">App Developer | Cloud Consultant</p>
-      <p class="intro">I create elegant digital solutions that combine technical excellence with intuitive user experiences.</p>
       
       <div class="contact">
         <a href="tel:+916361514507">
@@ -584,6 +707,31 @@
           }
         },
         "retina_detect": true
+      });
+
+      // Theme Toggle Functionality
+      const themeToggle = document.getElementById('themeToggle');
+      const icon = themeToggle.querySelector('i');
+      
+      // Check for saved theme preference or use preferred color scheme
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.classList.add('dark-theme');
+        icon.classList.replace('fa-moon', 'fa-sun');
+      }
+      
+      themeToggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-theme');
+        
+        if (document.body.classList.contains('dark-theme')) {
+          icon.classList.replace('fa-moon', 'fa-sun');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          icon.classList.replace('fa-sun', 'fa-moon');
+          localStorage.setItem('theme', 'light');
+        }
       });
 
       // Click animation effect
