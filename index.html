@@ -4,24 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aneesh Kashyap | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #4361ee;
+      --primary: #4f46e5;
       --primary-light: #e0e7ff;
-      --secondary: #3f37c9;
       --dark: #1e1b4b;
-      --darker: #0f172a;
       --light: #f8fafc;
       --gray: #64748b;
-      --light-gray: #e2e8f0;
-      --accent: #f43f5e;
-      --bg: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      --card-bg: rgba(255, 255, 255, 0.9);
-      --glass: rgba(255, 255, 255, 0.15);
-      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --light-gray: #f1f5f9;
+      --card-bg: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      --transition: all 0.3s ease;
     }
 
     * {
@@ -32,13 +27,14 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--darker);
-      line-height: 1.7;
-      overflow-x: hidden;
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 2rem;
@@ -46,61 +42,53 @@
 
     /* Header Styles */
     header {
-      padding: 6rem 0 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, var(--primary-light) 0%, rgba(255,255,255,0) 70%);
-      z-index: -1;
-      opacity: 0.6;
+      padding: 5rem 0 3rem;
+      text-align: center;
     }
 
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
       font-weight: 600;
+      color: var(--dark);
     }
 
     h1 {
-      font-size: 3.5rem;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(90deg, var(--dark), var(--primary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 0.75rem;
       line-height: 1.2;
     }
 
     .title-sub {
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 2vw, 1.25rem);
       color: var(--gray);
       font-weight: 400;
-      margin-bottom: 2rem;
-      position: relative;
+      margin-bottom: 1.5rem;
       display: inline-block;
+      position: relative;
     }
 
     .title-sub::after {
       content: '';
       position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 50px;
-      height: 3px;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
       background: var(--primary);
-      border-radius: 3px;
+    }
+
+    .intro {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      color: var(--gray);
+      font-size: 1.1rem;
     }
 
     .contact {
       display: flex;
-      gap: 1.5rem;
+      justify-content: center;
+      gap: 1rem;
       flex-wrap: wrap;
       margin-top: 2rem;
     }
@@ -114,78 +102,64 @@
       font-weight: 500;
       padding: 0.5rem 1rem;
       border-radius: 50px;
-      transition: all 0.3s ease;
-      background: var(--primary-light);
+      transition: var(--transition);
+      border: 1px solid var(--primary-light);
     }
 
     .contact a:hover {
+      background: var(--primary-light);
       transform: translateY(-2px);
-      box-shadow: var(--shadow);
-      color: var(--secondary);
     }
 
     /* Section Styles */
     section {
-      margin-bottom: 5rem;
-      position: relative;
+      margin-bottom: 4rem;
     }
 
     h2 {
-      font-size: 2.25rem;
-      margin-bottom: 2.5rem;
+      font-size: clamp(1.8rem, 3vw, 2.25rem);
+      margin-bottom: 2rem;
+      text-align: center;
       position: relative;
-      display: inline-block;
     }
 
     h2::after {
       content: '';
       position: absolute;
       bottom: -10px;
-      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
-      border-radius: 4px;
+      height: 3px;
+      background: var(--primary);
     }
 
     /* Card Styles */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
     }
 
     .card {
       background: var(--card-bg);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
+      border-radius: 12px;
       padding: 2rem;
       box-shadow: var(--shadow);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: var(--transition);
+      border: 1px solid var(--light-gray);
     }
 
     .card:hover {
-      transform: translateY(-10px);
-      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
     }
 
     .card h3 {
-      color: var(--dark);
-      margin-bottom: 0.75rem;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
     }
 
     .card em {
@@ -193,13 +167,13 @@
       color: var(--gray);
       font-style: normal;
       font-weight: 500;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
       font-size: 0.95rem;
     }
 
     .card p {
       margin-bottom: 1rem;
-      color: var(--darker);
+      color: var(--dark);
     }
 
     ul {
@@ -208,38 +182,36 @@
 
     ul li {
       position: relative;
-      padding-left: 1.75rem;
-      margin-bottom: 0.75rem;
+      padding-left: 1.5rem;
+      margin-bottom: 0.5rem;
     }
 
     ul li::before {
-      content: '▹';
+      content: '•';
       position: absolute;
       left: 0;
       color: var(--primary);
+      font-weight: bold;
     }
 
     /* Skills Section */
     .skills-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      justify-content: center;
+      gap: 0.75rem;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
     .skill-chip {
       background: var(--primary-light);
       color: var(--primary);
-      padding: 0.5rem 1.25rem;
+      padding: 0.5rem 1rem;
       border-radius: 50px;
       font-weight: 500;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-    }
-
-    .skill-chip:hover {
-      background: var(--primary);
-      color: white;
-      transform: translateY(-2px);
+      font-size: 0.85rem;
+      transition: var(--transition);
     }
 
     /* Footer */
@@ -248,82 +220,32 @@
       padding: 3rem 0;
       color: var(--gray);
       font-size: 0.9rem;
-      position: relative;
+      border-top: 1px solid var(--light-gray);
+      margin-top: 2rem;
     }
 
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 200px;
-      height: 1px;
-      background: var(--light-gray);
-    }
-
-    /* Animations */
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    .floating {
-      animation: float 6s ease-in-out infinite;
-    }
-
-    /* Responsive */
+    /* Responsive Adjustments */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 2.5rem;
+      .container {
+        padding: 0 1.5rem;
       }
       
-      h2 {
-        font-size: 1.8rem;
+      header {
+        padding: 3rem 0 2rem;
       }
       
       .card-grid {
         grid-template-columns: 1fr;
       }
-      
-      .contact {
-        flex-direction: column;
-        gap: 1rem;
-      }
-    }
-
-    /* Decorative Elements */
-    .blob {
-      position: absolute;
-      width: 300px;
-      height: 300px;
-      background: linear-gradient(135deg, var(--primary-light), rgba(255,255,255,0));
-      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-      z-index: -1;
-      opacity: 0.3;
-    }
-
-    .blob-1 {
-      top: -100px;
-      right: -100px;
-    }
-
-    .blob-2 {
-      bottom: -50px;
-      left: -100px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Decorative blobs -->
-    <div class="blob blob-1 floating"></div>
-    <div class="blob blob-2 floating" style="animation-delay: 2s;"></div>
-
     <header>
       <h1>Aneesh Kashyap T A</h1>
       <p class="title-sub">App Developer | Cloud Consultant</p>
-      <p class="intro">I craft exceptional digital experiences through innovative solutions in mobile development and cloud architecture.</p>
+      <p class="intro">I create elegant digital solutions that combine technical excellence with intuitive user experiences.</p>
       
       <div class="contact">
         <a href="tel:+916361514507">
@@ -344,35 +266,26 @@
     <section>
       <h2>About Me</h2>
       <div class="card">
-        <p>I'm an ambitious IT professional with expertise in full-stack development and cloud architecture. With a passion for creating efficient, scalable solutions, I bridge the gap between technical implementation and business objectives. My approach combines innovative thinking with robust engineering principles to deliver exceptional results.</p>
+        <p>I specialize in building performant applications and scalable cloud architectures. With a keen eye for detail and passion for clean code, I deliver solutions that are both technically robust and visually refined. My approach balances innovation with practicality to create meaningful digital experiences.</p>
       </div>
     </section>
 
     <section>
       <h2>Technical Skills</h2>
       <div class="card">
-        <h3>Core Competencies</h3>
-        <div class="skills-container">
-          <span class="skill-chip">Mobile Development</span>
-          <span class="skill-chip">Cloud Architecture</span>
-          <span class="skill-chip">AWS Services</span>
-          <span class="skill-chip">Full-stack Development</span>
-          <span class="skill-chip">DevOps</span>
-          <span class="skill-chip">UI/UX Design</span>
-        </div>
-
-        <h3 style="margin-top: 2rem;">Technologies</h3>
         <div class="skills-container">
           <span class="skill-chip">Flutter</span>
+          <span class="skill-chip">Dart</span>
           <span class="skill-chip">Python</span>
-          <span class="skill-chip">AWS Lambda</span>
-          <span class="skill-chip">DynamoDB</span>
+          <span class="skill-chip">AWS</span>
           <span class="skill-chip">Firebase</span>
           <span class="skill-chip">Docker</span>
-          <span class="skill-chip">React</span>
+          <span class="skill-chip">JavaScript</span>
           <span class="skill-chip">Node.js</span>
           <span class="skill-chip">MySQL</span>
           <span class="skill-chip">Git</span>
+          <span class="skill-chip">CI/CD</span>
+          <span class="skill-chip">REST APIs</span>
         </div>
       </div>
     </section>
@@ -383,12 +296,12 @@
         <div class="card">
           <h3>Master of Computer Applications</h3>
           <em>Jain University (Online) • 2024 – Present</em>
-          <p>Specializing in advanced cloud computing architectures and distributed systems. Coursework includes machine learning applications in cloud environments and enterprise-scale software design.</p>
+          <p>Advanced studies in cloud-native application development and distributed systems architecture.</p>
         </div>
         <div class="card">
           <h3>Bachelor of Computer Applications</h3>
           <em>BMS College of Commerce and Management • 2020 – 2023</em>
-          <p>CGPA: 7.7 • Focused on software engineering principles, database management, and algorithms. Completed coursework in data structures, operating systems, and web technologies.</p>
+          <p>CGPA: 7.7 • Focused on software engineering principles and full-stack development.</p>
         </div>
       </div>
     </section>
@@ -400,16 +313,19 @@
           <h3>App Developer</h3>
           <em>Bhupati Techno Solutions • Feb 2025 – Present</em>
           <ul>
-            <li>Architected state management solutions improving app performance by 45%</li>
-            <li>Mentored junior developers in clean code practices and testing methodologies</li>
+            <li>Developed cross-platform applications with Flutter framework</li>
+            <li>Implemented state management solutions for complex UIs</li>
+            <li>Optimized application performance and battery efficiency</li>
+            <li>Mentored junior developers in best practices</li>
           </ul>
         </div>
         <div class="card">
           <h3>Software Sales Executive</h3>
           <em>A.i Kaizen Pvt Ltd • Jan 2024 – Oct 2024</em>
           <ul>
-            <li>Conducted 50+ product demonstrations with 85% conversion rate</li>
-            <li>Collaborated with engineering teams to prioritize feature development based on client feedback</li>
+            <li>Consulted clients on technical solutions</li>
+            <li>Demonstrated product capabilities</li>
+            <li>Bridged communication between clients and engineers</li>
           </ul>
         </div>
       </div>
@@ -422,24 +338,27 @@
           <h3>DevSecOps ChatBot</h3>
           <em>AWS | Bedrock | SageMaker</em>
           <ul>
-            <li>Built intelligent Q&A system with 92% accuracy</li>
-            <li>Integrated Kendra for enterprise document search across multiple data sources</li>
+            <li>AI-powered assistant for technical documentation</li>
+            <li>Integrated with multiple knowledge bases</li>
+            <li>Implemented enterprise-grade security</li>
           </ul>
         </div>
         <div class="card">
           <h3>Scalable WordPress Hosting</h3>
           <em>AWS | RDS | Auto Scaling</em>
           <ul>
-            <li>Designed architecture with sub-second response times</li>
-            <li>Automated backups and disaster recovery procedures</li>
+            <li>High-availability architecture</li>
+            <li>Cost-optimized infrastructure</li>
+            <li>Automated backup solutions</li>
           </ul>
         </div>
         <div class="card">
           <h3>Easy Ride Cab App</h3>
           <em>Flutter | Firebase | Google Maps</em>
           <ul>
-            <li>Developed ride-hailing platform with real-time tracking and payment integration</li>
-            <li>Optimized location services </li>
+            <li>Real-time ride tracking</li>
+            <li>Integrated payment processing</li>
+            <li>Optimized location services</li>
           </ul>
         </div>
       </div>
@@ -451,24 +370,16 @@
         <div class="card">
           <h3>AWS Certified Cloud Practitioner</h3>
           <em>Amazon Web Services • 2024</em>
-          <p>Demonstrated cloud fluency across AWS services, security concepts, and architectural best practices.</p>
         </div>
         <div class="card">
           <h3>AWS re/Start Graduate</h3>
           <em>Amazon Web Services • 2023</em>
-          <p>Completed intensive cloud skills training program with hands-on labs in compute, storage, and networking.</p>
-        </div>
-        <div class="card">
-          <h3>Cloud Quest: Cloud Practitioner</h3>
-          <em>Amazon Web Services • 2023</em>
-          <p>Validated practical skills in building cloud solutions through gamified learning challenges.</p>
         </div>
       </div>
     </section>
 
     <footer>
       <p>© 2025 Aneesh Kashyap. All rights reserved.</p>
-      <p style="margin-top: 1rem;">Designed by Aneesh Kashyap</p>
     </footer>
   </div>
 </body>
